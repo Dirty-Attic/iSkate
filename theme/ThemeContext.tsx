@@ -1,11 +1,12 @@
 import React, { createContext, useState, useContext, useEffect } from 'react';
 import { useColorScheme } from 'react-native';
-import { colors, ThemeType } from './theme';
+import { colors, ThemeType, shadows } from './theme';
 
 type ThemeContextType = {
   theme: ThemeType;
   toggleTheme: () => void;
   colors: typeof colors.light;
+  shadows: typeof shadows;
 };
 
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
@@ -30,6 +31,7 @@ export const ThemeProvider: React.FC<{children: React.ReactNode}> = ({ children 
     theme,
     toggleTheme,
     colors: colors[theme],
+    shadows,
   };
 
   return <ThemeContext.Provider value={value}>{children}</ThemeContext.Provider>;
